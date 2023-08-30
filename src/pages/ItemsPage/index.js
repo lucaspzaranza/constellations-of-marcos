@@ -20,6 +20,11 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
                 <SearchInput placeholder={inputPlaceholder}/>
                 <MenuItemButton type="button" onClick={toggleShowItems}>Pegasus</MenuItemButton>
                 <MenuItemButton type="button">Perseu</MenuItemButton>
+                <MenuItemButton type="button">Perseu</MenuItemButton>
+                <MenuItemButton type="button">Perseu</MenuItemButton>
+                <MenuItemButton type="button">Perseu</MenuItemButton>
+                <MenuItemButton type="button">Perseu</MenuItemButton>
+                <MenuItemButton type="button">Perseu</MenuItemButton>
 
                 <BackLinkContainer>
                     <Link to="/">Voltar</Link>

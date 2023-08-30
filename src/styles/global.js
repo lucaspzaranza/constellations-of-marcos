@@ -4,13 +4,15 @@ export const narrowScreen = '400px';
 export const tabletScreen = '600px';
 export const titleBreakLine = '740px';
 export const desktopScreen = '800px';
-export const fullHDScreen = '1920px';
+export const fullHDScreenWidth = '1920px';
+export const fullHDScreenHeight = '900px';
 
 export const mobileMaxWidth = `(max-width: ${narrowScreen})`;
 export const tabletMinWidth = `(min-width: ${tabletScreen})`;
 export const tabletMaxWidth = `(max-width: ${tabletScreen})`;
 export const desktopMinWidth = `(min-width: ${desktopScreen})`;
-export const fullHDMinWidth = `(min-width: ${fullHDScreen})`;
+export const fullHDMinWidth = `(min-width: ${fullHDScreenWidth})`;
+export const fullHDMinHeight = `(min-height: ${fullHDScreenHeight})`;
 export const titleBreakLineBreakPoint = `(max-width: ${titleBreakLine})`;
 
 export default createGlobalStyle`
@@ -35,18 +37,31 @@ export default createGlobalStyle`
         h2 {
             width: auto;
             font-size: 5vw;
-            margin-top: 0px;
+            margin-top: -20px;
 
             @media ${tabletMinWidth} {
                 font-size: 2rem;
             }
+
+            @media ${titleBreakLineBreakPoint} {
+                font-size: 1.5rem;
+                margin-top: 40px;
+            }
+
+            @media ${mobileMaxWidth} {
+                margin-top: 0px;
+            }
+        }
+
+        h3 {
+            margin-top: -10px;
         }
 
         a {
             border: solid 1px ${props => props.theme.buttonBorder};
             background-color: ${props => props.theme.backgroundDarker};
             width: 100%;
-            height: 16.5vh;
+            height: 16.8vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -56,12 +71,12 @@ export default createGlobalStyle`
             border-radius: ${props => props.theme.borderRadius};
             color: white;
 
-            @media ${tabletMinWidth} {
-                margin-top: 0vh;
+            @media ${titleBreakLineBreakPoint} {
+                height: 14.5vh;
             }
 
-            @media ${mobileMaxWidth} {
-                height: 15vh;
+            @media ${tabletMaxWidth} {
+                font-size: 1.3rem;
             }
         }
 
@@ -129,7 +144,26 @@ export const MenuItemButton = styled.button`
     }
 `;
 
+export const ConstellationContentContainer = styled.div`
+    min-height: calc(100vh - 5cm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @media ${mobileMaxWidth} {
+        min-height: calc(100vh - 7cm);
+    }
+`;
+
 export const ArticleContainer = styled.article`
     text-align: justify;
     text-indent: 5vw;
+    margin-left: 20px;
+    margin-right: 20px;
+`;
+
+export const ArticleButton = styled.button`
+    margin-bottom: 20px;
+    width: ${props => props.theme.buttonWidth};
 `;
