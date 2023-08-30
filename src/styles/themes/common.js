@@ -5,7 +5,8 @@ const common = {
       large: 24,
     },
     borderRadius: '10px',
-    buttonColor: '#f0f8ff'
+    buttonColor: '#f0f8ff',
+    buttonWidth: '25vw'
 };
 
 export default common;

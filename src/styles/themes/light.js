@@ -4,8 +4,9 @@ const light = {
     ...commonStyles,
     textColor: '#222',
     background: '#f0f8ff',
-    backgroundDarker: '#99cfff',
-    buttonBorder: '#4dacff'
+    backgroundDarker: '#b3dbff',
+    buttonBorder: '#80c3ff',
+    clickColor: '#4dacff'
 }
 
 export default light;

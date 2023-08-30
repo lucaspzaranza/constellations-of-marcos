@@ -9,7 +9,9 @@ export const ThemeButtonContainer = styled.button`
     margin-top: 0px;
     border: none;
     background: none;
+    min-width: auto;
     width: auto;
+    height: auto;
 
     img {
         width: 30px;

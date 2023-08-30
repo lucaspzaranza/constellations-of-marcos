@@ -1,18 +1,20 @@
 import { styled } from 'styled-components';
-import { tabletMaxWidth } from '../../styles/global';
 
-const FooterContainer = styled.div`
-    height: 10vw;
-    background-color: ${props => props.theme.backgroundDarker};
+export default styled.footer`
+    width: inherit;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    border: solid 1px ${props => props.theme.buttonBorder};
+    flex-direction: column;
+    justify-content: end;
 
-    @media ${tabletMaxWidth} {
-        height: 10vh;
+    span {
+        background-color: ${props => props.theme.backgroundDarker};
+        border-radius: ${props => props.theme.borderRadius};
+        border: solid 1px ${props => props.theme.buttonBorder};
+        height: 7vh;
+        width: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
     }
 `;
-
-export default FooterContainer;
