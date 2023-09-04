@@ -6,7 +6,8 @@ const light = {
     background: '#f0f8ff',
     backgroundDarker: '#b3dbff',
     buttonBorder: '#80c3ff',
-    clickColor: '#4dacff'
+    clickColor: '#4dacff',
+    searchIconBackground: '#b3dbff'
 }
 
 export default light;

@@ -6,7 +6,8 @@ const dark = {
     background: '#444',
     backgroundDarker: '#222',
     buttonBorder: '#111',
-    clickColor: '#000'
+    clickColor: '#000',
+    searchIconBackground: '#666'
 }
 
 export default dark;

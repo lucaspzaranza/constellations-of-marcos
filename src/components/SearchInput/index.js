@@ -1,7 +1,11 @@
-import StyledSearchInput from "./styles";
+import StyledSearchInput, { InputContainer } from "./styles";
+import magnifier from '../../assets/svg/zoom.svg'
 
-export default function SearchInput({ placeholder}) {
+export default function SearchInput({ placeholder, filterFunction }) {
     return (
-        <StyledSearchInput placeholder={placeholder}/>
+        <InputContainer>
+            <StyledSearchInput placeholder={placeholder} onInput={filterFunction}/>
+            <img src={magnifier} alt="search"/>
+        </InputContainer>
     )
 }

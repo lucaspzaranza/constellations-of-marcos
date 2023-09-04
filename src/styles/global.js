@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { createGlobalStyle, styled } from "styled-components";
 
 export const narrowScreen = '400px';
@@ -110,6 +111,7 @@ export default createGlobalStyle`
                 transition: background-color 0.25s;
             }
         }
+
     }
 `;
 
@@ -161,9 +163,72 @@ export const ArticleContainer = styled.article`
     text-indent: 5vw;
     margin-left: 20px;
     margin-right: 20px;
+
+    span {
+        display: flex;
+        margin-bottom: 10px;
+    }
 `;
 
 export const ArticleButton = styled.button`
     margin-bottom: 20px;
     width: ${props => props.theme.buttonWidth};
+`;
+
+export const ItemMenuLink = styled(Link)`
+    border: none;
+    background-color: transparent;
+    width: max-content;
+    height: min-content;
+    font-weight: normal;
+    text-decoration: underline;
+    font-size: inherit;
+    color: ${props => props.theme.textColor};
+    border-radius: 0px;
+    margin-top: -10px;
+    padding: 5px 5vw 5px 0vw;
+    margin-bottom: 10px;
+
+    & + span {
+        margin-top: -10px;
+    }
+
+    &:hover {
+        transition: background-color 0.5s;
+    }
+
+    &:active {
+        transition: background-color 0.25s;
+    }
+`
+
+export const IconLinkDiv = styled.div`
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`;
+
+export const IconLinkContainer = styled(Link)`
+    background-color: transparent;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+
+    img {
+        width: 100px !important;
+
+        @media ${tabletMaxWidth} {
+            width: 80px !important;
+        }
+
+        @media ${mobileMaxWidth} {
+            width: 60px !important;
+        }
+    }
+
+    &:hover {
+        background-color: white;
+        transition: background-color 0.5s;
+    }
 `;
