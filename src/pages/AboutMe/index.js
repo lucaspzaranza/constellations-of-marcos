@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { ArticleButton, IconLinkDiv } from "../../styles/global";
 import duck from '../../assets/pics/duck.jpg';
-import ZazaArticle from './styles';
+import ZazaArticle from '../AboutMarcos/styles';
+
 import IconLink from '../../components/IconLink';
 
 export default function AboutMe() {
@@ -17,8 +18,7 @@ export default function AboutMe() {
             <ZazaArticle>
                 <img src={duck} alt="duck"/>
                 <p>
-                    Programador, músico e astrólogo. Como eu faço tudo isso? Seguindo o exemplo de um pato,
-                    que nada, anda e voa.
+                    Eu sou um pato. O pato anda, nada e voa, eu sou programador, músico e astrólogo.
                 </p>
 
                 <IconLinkDiv>

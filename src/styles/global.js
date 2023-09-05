@@ -5,7 +5,8 @@ export const narrowScreen = '400px';
 export const tabletScreen = '600px';
 export const titleBreakLine = '740px';
 export const desktopScreen = '800px';
-export const fullHDScreenWidth = '1920px';
+//export const fullHDScreenWidth = '1920px';
+export const fullHDScreenWidth = '1800px';
 export const fullHDScreenHeight = '900px';
 
 export const mobileMaxWidth = `(max-width: ${narrowScreen})`;

@@ -24,8 +24,8 @@ export default function AboutMarcos() {
                     <IconLink icon="instagram" path="https://www.instagram.com/horary_astrology/"/>
                     <IconLink icon="youtube" path="https://www.youtube.com/@marcos_monteiro"/>
                 </IconLinkDiv>
-
             </MarcosArticle>
+
             <ArticleButton onClick={backFunction}>
                 Voltar
             </ArticleButton>

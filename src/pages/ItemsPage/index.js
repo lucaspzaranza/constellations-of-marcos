@@ -2,7 +2,7 @@ import { useState } from "react";
 import SearchInput from "../../components/SearchInput";
 import { MenuItemButton } from "../../styles/global";
 import { Link } from "react-router-dom";
-import { BackLinkContainer, BackLinkIconContainer, ItemsPageContainer, HeaderMenu } from './styles'
+import { BackLinkContainer, BackLinkIconContainer, ItemsPageContainer, HeaderMenu, MenuItemsContainer } from './styles'
 
 export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemComponent }) {
     const [showItems, setShowItems] = useState(false);
@@ -22,6 +22,22 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
             id: 3,
             name: 'Ceto'
         },
+        {
+            id: 4,
+            name: 'Andrômeda'
+        },
+        {
+            id: 5,
+            name: 'Virgem'
+        },
+        {
+            id: 6,
+            name: 'Libra'
+        },
+        {
+            id: 7,
+            name: 'Ofiúco'
+        }
     ]
 
     useState(() => {
@@ -50,11 +66,17 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
                     <SearchInput placeholder={inputPlaceholder} filterFunction={filterArray}/>
                 </HeaderMenu>
 
-                {filteredArray.map(item => (
-                    <MenuItemButton key={item.id} type="button" onClick={() => toggleShowItems(item.id)}>
-                        {item.name}
-                    </MenuItemButton>
-                ))}
+                <MenuItemsContainer>
+                    {filteredArray.length === 0 && (
+                        <p>Sua busca não encontrou nenhum resultado.</p>
+                    )}
+
+                    {filteredArray.map(item => (
+                        <MenuItemButton key={item.id} type="button" onClick={() => toggleShowItems(item.id)}>
+                            {item.name}
+                        </MenuItemButton>
+                    ))}
+                </MenuItemsContainer>
 
                 <BackLinkContainer>
                     <Link to="/">⬅ Voltar</Link>

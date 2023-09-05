@@ -1,12 +1,16 @@
 import { styled } from "styled-components";
-import { titleBreakLineBreakPoint, mobileMaxWidth } from "../../styles/global";
+import { titleBreakLineBreakPoint, mobileMaxWidth, fullHDMinWidth } from "../../styles/global";
 
 export default styled.input`
     width: 50vw;
     height: 6vh;
     font-size: 2rem;
     border-radius: ${props => props.theme.borderRadius};
-    border: 2px solid;
+    border: 2px solid ${props => props.theme.buttonBorder};
+
+    &:focus {
+        outline: 1px solid ${props => props.theme.inputFocus};
+    }
 
     @media ${titleBreakLineBreakPoint} {
         font-size: 4vw;
@@ -30,5 +34,8 @@ export const InputContainer = styled.div`
         border-radius: ${props => props.theme.borderRadius};
         width: 3em;
 
+        @media ${fullHDMinWidth} {
+            width: 3.85em;
+        }
     }
 `;

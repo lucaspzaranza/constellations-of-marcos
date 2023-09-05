@@ -7,7 +7,8 @@ const dark = {
     backgroundDarker: '#222',
     buttonBorder: '#111',
     clickColor: '#000',
-    searchIconBackground: '#666'
+    searchIconBackground: '#666',
+    inputFocus: 'black'
 }
 
 export default dark;

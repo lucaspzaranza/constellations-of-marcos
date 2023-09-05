@@ -7,7 +7,8 @@ const light = {
     backgroundDarker: '#b3dbff',
     buttonBorder: '#80c3ff',
     clickColor: '#4dacff',
-    searchIconBackground: '#b3dbff'
+    searchIconBackground: '#b3dbff',
+    inputFocus: 'blue'
 }
 
 export default light;

@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { mobileMaxWidth } from "../../styles/global";
+import { mobileMaxWidth, fullHDMinWidth } from "../../styles/global";
 import { Link } from "react-router-dom";
 
 export const ItemsPageContainer = styled.div`
@@ -7,6 +7,10 @@ export const ItemsPageContainer = styled.div`
 
     @media ${mobileMaxWidth} {
         min-height: calc(100vh - 5.7cm);
+    }
+
+    @media ${fullHDMinWidth} {
+        min-height: calc(100vh - 4.55cm);
     }
 `;
 
@@ -18,6 +22,14 @@ export const BackLinkContainer = styled.div`
     a {
         height: 6vh;
         width: ${props => props.theme.buttonWidth};
+    }
+`;
+
+export const MenuItemsContainer = styled.div`
+    min-height: 54vh;
+
+    @media ${mobileMaxWidth} {
+        min-height: 44vh;
     }
 `;
 
