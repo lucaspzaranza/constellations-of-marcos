@@ -1,56 +1,48 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import SearchInput from "../../components/SearchInput";
 import { MenuItemButton } from "../../styles/global";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { BackLinkContainer, BackLinkIconContainer, ItemsPageContainer, HeaderMenu, MenuItemsContainer } from './styles'
+import fixedStars from "../../data/fixedStars"
+import constellations from "../../data/constellations";
 
 export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemComponent }) {
+    const GetDataArray = () => ItemComponent.name === 'Constellation' ? constellations : fixedStars;
+    const navigation = useNavigate();
+    const location = useLocation();
+
     const [showItems, setShowItems] = useState(false);
-    const [filteredArray, setFilteredArray] = useState([]);
+    const [navigationCount, setNavigationCount] = useState(0);
+    //location.state === null ? false : location.state;
+    const [filteredArray, setFilteredArray] = useState(GetDataArray());
     const [selectedData, setSelectedData] = useState(filteredArray[0]);
 
-    const loadedData = [
-        {
-            id: 1,
-            name: 'Perseu'
-        },
-        {
-            id: 2,
-            name: 'Pegasus'
-        },
-        {
-            id: 3,
-            name: 'Ceto'
-        },
-        {
-            id: 4,
-            name: 'Andrômeda'
-        },
-        {
-            id: 5,
-            name: 'Virgem'
-        },
-        {
-            id: 6,
-            name: 'Libra'
-        },
-        {
-            id: 7,
-            name: 'Ofiúco'
-        }
-    ]
-
-    useState(() => {
-        setFilteredArray(loadedData);
-    }, []);
+    const baseArray = useMemo(() => GetDataArray(), []);
 
     function filterArray(input) {
-        setFilteredArray(loadedData.filter
+        setFilteredArray(baseArray.filter
             (data => data.name.toLowerCase().includes(input.target.value.toLowerCase())));
     }
 
+    function setNavigationCountWrapper(val) {
+        console.log('setting navigated to: ', val);
+        //setNavigationCount(prevState => (prevState + val) > -1 ? (prevState + val) : 0);
+        if(navigationCount + val >= 0) {
+            setNavigationCount(prevState => prevState + val);
+            console.log('navigationCount: ', navigationCount);
+        }
+    }
+
     function toggleShowItems(id) {
-        setSelectedData(loadedData.find(data => data.id === id));
+        //console.log('has navigated? ', navigated);
+        if(showItems && navigationCount > 0) {
+            navigation(-1);
+            //console.log(location);
+            return;
+        }
+
+
+        setSelectedData(baseArray.find(data => data.id === id));
         setShowItems(prevState => !prevState);
     }
 
@@ -83,7 +75,7 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
                 </BackLinkContainer>
             </>
             :
-                <ItemComponent data={selectedData} backFunction={toggleShowItems}/>
+                <ItemComponent data={selectedData} backFunction={toggleShowItems} setNavigationCountWrapper={setNavigationCountWrapper}/>
             }
         </ItemsPageContainer>
     )

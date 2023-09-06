@@ -5,7 +5,6 @@ export const narrowScreen = '400px';
 export const tabletScreen = '600px';
 export const titleBreakLine = '740px';
 export const desktopScreen = '800px';
-//export const fullHDScreenWidth = '1920px';
 export const fullHDScreenWidth = '1800px';
 export const fullHDScreenHeight = '900px';
 
@@ -164,6 +163,7 @@ export const ArticleContainer = styled.article`
     text-indent: 5vw;
     margin-left: 20px;
     margin-right: 20px;
+    width: 98%;
 
     span {
         display: flex;
