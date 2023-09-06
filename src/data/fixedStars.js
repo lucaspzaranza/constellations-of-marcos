@@ -2,23 +2,22 @@ export const fixedStars = [
     {
         id: 1,
         name: 'Spica Virginis',
-        longitude: 245.7,
-        latitude: 5.7,
-        magnitude: 4.2,
+        longitude: 204.08,
+        latitude: -2,
+        magnitude: 0.98,
         category: 0,
-        nature: 'Mercúrio',
+        nature: 'Vênus e Marte',
         constellationID: 1,
         constellationName: '',
-        description: ["A principal estrela da constelação de Virgem.", "bunda",
-        `<p>Who moved my cheese when the cheese comes out everybody's happy goat. Mascarpone port-salut who moved my cheese stilton dolcelatte cream cheese bocconcini smelly cheese. Cheesy feet brie taleggio cheeseburger the big cheese jarlsberg cheese and wine cheese and wine. Cut the cheese croque monsieur feta fromage.</p>
-        <p>Blue castello cheese on toast camembert de normandie. Paneer ricotta dolcelatte cauliflower cheese macaroni cheese everyone loves st. agur blue cheese fondue. Everyone loves stinking bishop cheese and wine jarlsberg rubber cheese mozzarella taleggio cheese and wine. Everyone loves ricotta emmental swiss smelly cheese the big cheese who moved my cheese halloumi. Monterey jack goat.</p>
-        <p>Croque monsieur cow hard cheese. Say cheese squirty cheese smelly cheese cheese on toast mozzarella stilton croque monsieur hard cheese. Mascarpone taleggio cheese and wine cauliflower cheese cheesy feet hard cheese danish fontina taleggio. Smelly cheese say cheese.</p>
-        <p>Chalk`
+        description: [`
+            A estrela mais forte de Virgem, e uma das mais fortes do céu, é “Spica Virginis”, o “Espigão da Virgem”, em 24°8' de Libra, de magnitude 0,98, de latitude 2° Sul, da natureza de Vênus e Marte, e uma das significações mais positivas possíveis dessa união é ação, Marte, de bênçãos, de coisas boas, Vênus; o que Spica oferece é a bênção de Erígone, a benção da deusa Astréia, que significa pureza, justiça, e bondade, a bênção de Nossa Senhora, associa-se a proteção. Embora seja uma das Estrelas Reais, Spica não está associada ao sucesso, mas a proteção, a significação dela tem mais que ver com proteção do que ascensão.
+        `
         ]
     },
     {
         id: 2,
         name: 'Antares',
+        longitude: 240.04,
         constellationID: 2,
         description: ["O coração do escorpião."]
     },

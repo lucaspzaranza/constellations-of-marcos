@@ -23,11 +23,11 @@ function App() {
     return (
         <ThemeProvider theme={currentTheme}>
             <GlobalStyle/>
-            <BrowserRouter>
-                <Header onToggleTheme={toggleTheme} selectedTheme={theme}/>
-                <Router/>
-                <Footer/>
-            </BrowserRouter>
+                <BrowserRouter>
+                    <Header onToggleTheme={toggleTheme} selectedTheme={theme}/>
+                    <Router/>
+                    <Footer/>
+                </BrowserRouter>
         </ThemeProvider>
     );
 }

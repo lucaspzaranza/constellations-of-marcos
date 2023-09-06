@@ -1,20 +1,15 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { ArticleContainer, ArticleButton, ConstellationContentContainer, ItemMenuLink } from "../../styles/global";
 import fixedStars from "../../data/fixedStars";
 import { useLocation } from "react-router-dom";
+import { v4 as uuid } from 'uuid';
 
 export default function Constellation({ backFunction, data, setNavigationCountWrapper }) {
     const location = useLocation();
     const constellation = location.state === null ? data : location.state;
 
-    const stars = useMemo(() => fixedStars.filter(star => star.constellationID === constellation.id), [fixedStars]);
-
-    useEffect(() => {
-        //console.log('stars on this constellation');
-        //console.log(stars);
-        // console.log('Constellation data:');
-        // console.log(location.state.data);
-    }, []);
+    const stars = useMemo(() => fixedStars.filter(
+        star => star.constellationID === constellation.id), [fixedStars]);
 
     return(
         <>
@@ -24,7 +19,9 @@ export default function Constellation({ backFunction, data, setNavigationCountWr
                     <section>
                         {
                             constellation.description.map(paragraph => (
-                                <p>{paragraph}</p>
+                                <p key={uuid()}>
+                                    {paragraph}
+                                </p>
                             ))
                         }
                     </section>
@@ -32,7 +29,7 @@ export default function Constellation({ backFunction, data, setNavigationCountWr
                         <h4>Estrelas Fixas dessa Constelação:</h4>
                         {
                             stars.map(star => (
-                                <ItemMenuLink to="/fixedstars" onClick={() => setNavigationCountWrapper(1)}>
+                                <ItemMenuLink key={uuid()} to="/fixedstars" state={star} onClick={() => setNavigationCountWrapper(1)}>
                                     {star.name}
                                 </ItemMenuLink>
                             ))

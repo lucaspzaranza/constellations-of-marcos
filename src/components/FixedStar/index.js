@@ -1,47 +1,63 @@
-import { useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import { ConstellationContentContainer, ArticleContainer, ArticleButton, ItemMenuLink } from "../../styles/global";
 import constellations from "../../data/constellations";
+import { v4 as uuid } from 'uuid';
+import { useLocation } from "react-router-dom";
+import { signsShorts } from "../../data/signs";
 
 export default function FixedStar({ backFunction, data, setNavigationCountWrapper }) {
+    const location = useLocation();
+    const star = location.state === null ? data : location.state;
+
     const constellationName = useMemo(
         () => constellations
-        .find(constellation => constellation.id === data.constellationID).name,
+        .find(constellation => constellation.id === star.constellationID).name,
         [constellations]
     );
 
-    useEffect(() => {
-        // console.log('Fixed Star data:');
-        // console.log(data);
-    }, []);
-
     function getConstellationData(id) {
-        //console.log('found constellation: ');
-        //console.log(constellations.find(constellation => constellation.id === id));
         return constellations.find(constellation => constellation.id === id);
+    }
+
+    function getTransformedLongitude(longitude) {
+        const signIndex = Math.trunc(longitude / 30);
+        const signDegree = longitude % 30;
+
+        var [numericPart, decimalPart] = signDegree.toString().split('.');
+        decimalPart = decimalPart.length === 1 ? `${decimalPart}0` : decimalPart.substring(0, 2);
+
+        return `${numericPart}° ${signsShorts[signIndex]} ${decimalPart}'`;
+    }
+
+    function getStartCategory(category) {
+        return category === 0 ? 'Estrela Fixa' : 'Nebulosa';
     }
 
     return(
         <>
-            <h2>{data.name}</h2>
+            <h2>{star.name}</h2>
             <ConstellationContentContainer>
                 <ArticleContainer>
                     <section>
-                        <span>Longitude: {data.longitude}</span>
-                        <span>Latitude: {data.latitude}</span>
-                        <span>Magnitude: {data.magnitude}</span>
-                        <span>Tipo: {data.category}</span>
+                        {/* <span>Longitude: {star.longitude}</span> */}
+                        <span>Longitude: {getTransformedLongitude(star.longitude)}</span>
+                        <span>Latitude: {star.latitude}</span>
+                        <span>Magnitude: {star.magnitude}</span>
+                        <span>Tipo: {getStartCategory(star.category)}</span>
 
-                        <ItemMenuLink to="/constellations" state={getConstellationData(data.constellationID)}
+                        <ItemMenuLink to="/constellations" state={getConstellationData(star.constellationID)}
                             onClick={() => setNavigationCountWrapper(1)}>
                             Constelação: {constellationName}
                         </ItemMenuLink>
 
-                        <span>Natureza: {data.nature}</span>
+                        <span>Natureza: {star.nature}</span>
                     </section>
                     <section>
                         {
-                            data.description.map(paragraph => (
-                                <p>{paragraph}</p>
+                            star.description.map(paragraph => (
+                                <p key={uuid()}>
+                                    {paragraph}
+                                </p>
                             ))
                         }
                     </section>
