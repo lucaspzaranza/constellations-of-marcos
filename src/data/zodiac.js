@@ -27,3 +27,13 @@ export const signsShorts = [
     'AQU',
     'PIS'
 ];
+
+export const planets = [ // Ordem caldáica
+    'Lua',
+    'Mercúrio',
+    'Vênus',
+    'Sol',
+    'Marte',
+    'Júpiter',
+    'Saturno'
+]

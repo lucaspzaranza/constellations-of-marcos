@@ -26,7 +26,7 @@ export default function Constellation({ backFunction, data, setNavigationCountWr
                         }
                     </section>
                     <section>
-                        <h4>Estrelas Fixas dessa Constelação:</h4>
+                        <h4>Estrelas Fixas relevantes dessa constelação:</h4>
                         {
                             stars.map(star => (
                                 <ItemMenuLink key={uuid()} to="/fixedstars" state={star} onClick={() => setNavigationCountWrapper(1)}>

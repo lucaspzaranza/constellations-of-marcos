@@ -18,7 +18,7 @@ export default function AboutMe() {
             <ZazaArticle>
                 <img src={duck} alt="duck"/>
                 <p>
-                    Eu sou um pato. O pato anda, nada e voa, eu sou programador, músico e astrólogo.
+                    Programador, músico e astrólogo. Como eu faço tudo isso? Seguindo o exemplo do pato, que faz um pouco de tudo: anda, nada e voa.
                 </p>
 
                 <IconLinkDiv>
