@@ -8,8 +8,7 @@ import constellations from "../../data/constellations";
 import constellationIcon from '../../assets/svg/constellation.svg'
 import starIcon from '../../assets/svg/star.svg'
 
-export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemComponent }) {
-    const isConstellation = ItemComponent.name === 'Constellation';
+export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemComponent, isConstellation }) {
     const GetDataArray = () => isConstellation ? constellations : fixedStars;
     const navigation = useNavigate();
 

@@ -12,14 +12,14 @@ export default function Router() {
             <Route path="/" element={<Home/>}/>
 
             <Route path="/constellations" element={
-                <ItemsPage
+                <ItemsPage isConstellation={true}
                     title="Constelações" subtitle="Selecione a Constelação desejada"
                     inputPlaceholder="Pesquisar Constelação..." ItemComponent={Constellation}
                 />}
             />
 
             <Route path="/fixedStars" element={
-                <ItemsPage
+                <ItemsPage isConstellation={false}
                     title="Estrelas Fixas" subtitle="Selecione a Estrela Fixa desejada"
                     inputPlaceholder="Pesquisar Estrela..." ItemComponent={FixedStar}
                 />}
