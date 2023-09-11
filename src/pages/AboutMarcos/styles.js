@@ -3,15 +3,6 @@ import { mobileMaxWidth, tabletMaxWidth, fullHDMinWidth } from "../../styles/glo
 
 export default styled.article`
     margin-bottom: 10px;
-    height: calc(100vh - 7.3cm);
-
-    @media ${mobileMaxWidth} {
-        height: calc(100vh - 9.15cm);
-    }
-
-    @media ${fullHDMinWidth} {
-        height: calc(100vh - 8.7cm);
-    }
 
     img {
         width: 15em;
@@ -19,5 +10,13 @@ export default styled.article`
         @media ${tabletMaxWidth} {
             width: 40vw;
         }
+    }
+
+    p {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: justify;
+        text-indent: 5vw;
     }
 `;

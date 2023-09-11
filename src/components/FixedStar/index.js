@@ -1,13 +1,18 @@
 import { useMemo } from "react";
-import { ConstellationContentContainer, ArticleContainer, ArticleButton, ItemMenuLink } from "../../styles/global";
+import { ConstellationContentContainer, ArticleContainer, DetailsPageHeader2Container,
+     ArticleButton, ItemMenuLink } from "../../styles/global";
 import constellations from "../../data/constellations";
 import fixedStars from "../../data/fixedStars";
 import { v4 as uuid } from 'uuid';
 import { useLocation } from "react-router-dom";
-import { signsShorts, planets } from "../../data/zodiac";
-import aries from '../../assets/svg/zodiac/aries-2-svgrepo-com.svg'
+import { signs, planets } from "../../data/zodiac";
+import starSVG from '../../assets/svg/star.svg'
+import starDarkSVG from '../../assets/svg/star-dark.svg'
+import { useTheme } from "styled-components";
+import dark from "../../styles/themes/dark";
 
 export default function FixedStar({ backFunction, data, setNavigationCountWrapper }) {
+    const theme = useTheme();
     const location = useLocation();
     const star = location.state === null ? data : location.state;
     const notSpecified = 'Não especificada';
@@ -34,7 +39,9 @@ export default function FixedStar({ backFunction, data, setNavigationCountWrappe
             decimalPart = decimalPart.length === 1 ? `${decimalPart}0` : decimalPart.substring(0, 2);
         }
 
-        return `${numericPart}° ${signsShorts[signIndex]} ${decimalPart}'`;
+        const sign = signs[signIndex];
+
+        return `${numericPart}° ${sign.symbol} ${sign.short} ${decimalPart}'`;
     }
 
     function getTransformedLatitude(latitude) {
@@ -54,7 +61,8 @@ export default function FixedStar({ backFunction, data, setNavigationCountWrappe
         var result = '';
         for (let index = 0; index < nature.length; index++) {
             const planetIndex = nature[index];
-            result += `${planets[planetIndex]}`;
+            const planet = planets[planetIndex];
+            result += `${planet.name} ${planet.symbol}`;
 
             if(nature.length > 0 && index < nature.length - 1)
                 result += ' e '
@@ -65,11 +73,14 @@ export default function FixedStar({ backFunction, data, setNavigationCountWrappe
 
     return(
         <>
-            <h2>{star.name}</h2>
+            <DetailsPageHeader2Container>
+                <img src={theme.background === dark.background ? starSVG : starDarkSVG} alt="starSVG"/>
+                {star.name}
+            </DetailsPageHeader2Container>
             <ConstellationContentContainer>
                 <ArticleContainer>
                     <section>
-                        <span>Longitude: <img src={aries} alt="sign" style={{width: "20px"}}/> {getTransformedLongitude(star.longitude) || notSpecified}</span>
+                        <span>Longitude: {getTransformedLongitude(star.longitude) || notSpecified}</span>
                         <span>Latitude: {getTransformedLatitude(star.latitude) || notSpecified}</span>
                         <span>Magnitude: {star.magnitude || notSpecified}</span>
                         <span>Tipo: {getStarCategory(star.category) || notSpecified}</span>

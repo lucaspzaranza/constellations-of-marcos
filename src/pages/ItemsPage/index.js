@@ -1,13 +1,16 @@
 import { useContext, useMemo, useState } from "react";
 import SearchInput from "../../components/SearchInput";
-import { MenuItemButton } from "../../styles/global";
+import { MenuItemButton, MenuItemNameContainer } from "../../styles/global";
 import { Link, useNavigate } from "react-router-dom";
 import { BackLinkContainer, BackLinkIconContainer, ItemsPageContainer, HeaderMenu, MenuItemsContainer } from './styles'
 import fixedStars from "../../data/fixedStars"
 import constellations from "../../data/constellations";
+import constellationIcon from '../../assets/svg/constellation.svg'
+import starIcon from '../../assets/svg/star.svg'
 
 export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemComponent }) {
-    const GetDataArray = () => ItemComponent.name === 'Constellation' ? constellations : fixedStars;
+    const isConstellation = ItemComponent.name === 'Constellation';
+    const GetDataArray = () => isConstellation ? constellations : fixedStars;
     const navigation = useNavigate();
 
     const [showItems, setShowItems] = useState(false);
@@ -60,7 +63,10 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
 
                     {filteredArray.map(item => (
                         <MenuItemButton key={item.id} type="button" onClick={() => toggleShowItems(item.id)}>
-                            {item.name}
+                            <MenuItemNameContainer>
+                                <img src={isConstellation? constellationIcon : starIcon} alt="itemIcon"/>
+                                {' ' + item.name}
+                            </MenuItemNameContainer>
                         </MenuItemButton>
                     ))}
                 </MenuItemsContainer>

@@ -1,7 +1,1 @@
-1 - Colocar um svg de cada signo na longitude
-
-2 - Colocar o símbolo de cada planeta na descrição da natureza das estrelas
-
-3 - Achar um svg de uma estrelinha e um de uma constelação pra colocar do lado de cada link
-
-4 - Explicar sobre o projeto e porque eu o fiz
+1 - Forma de filtrar a busca pelas estrelas por signo ou por constelação

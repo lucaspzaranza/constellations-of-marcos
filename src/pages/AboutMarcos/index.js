@@ -17,7 +17,9 @@ export default function AboutMarcos() {
             <MarcosArticle>
                 <img src={marcos} alt="astrologer"/>
                 <p>
-                    O Faixa preta da Astrologia.
+                    Faixa preta no Jiu-jitsu e na Astrologia,
+                    Marcos Monteiro fez um curso ensinando sobre as estrelas fixas com maior relevância astrológica.
+                    Para mais informações sobre o curso e seus serviços, entre em contato com ele através de suas redes sociais.
                 </p>
 
                 <IconLinkDiv>

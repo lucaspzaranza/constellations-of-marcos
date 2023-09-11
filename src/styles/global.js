@@ -115,6 +115,15 @@ export default createGlobalStyle`
     }
 `;
 
+export const MenuItemNameContainer = styled.span`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 5em;
+    width: 50vw;
+`;
+
 export const MenuItemButton = styled.button`
     margin-top: 3vh;
     margin-bottom: 3vh;
@@ -144,6 +153,10 @@ export const MenuItemButton = styled.button`
         background-color: ${props => props.theme.clickColor};
         transition: background-color 0.25s;
     }
+
+    img {
+        width: 1.1em;
+    }
 `;
 
 export const ConstellationContentContainer = styled.div`
@@ -161,8 +174,8 @@ export const ConstellationContentContainer = styled.div`
 export const ArticleContainer = styled.article`
     text-align: justify;
     text-indent: 5vw;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
     width: 98%;
 
     span {
@@ -233,3 +246,13 @@ export const IconLinkContainer = styled(Link)`
         transition: background-color 0.5s;
     }
 `;
+
+export const DetailsPageHeader2Container = styled.h2`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: 1.1em;
+    }
+`

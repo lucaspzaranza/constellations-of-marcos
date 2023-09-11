@@ -1,10 +1,16 @@
 import { useMemo } from "react";
-import { ArticleContainer, ArticleButton, ConstellationContentContainer, ItemMenuLink } from "../../styles/global";
+import { ArticleContainer, ArticleButton, DetailsPageHeader2Container,
+    ConstellationContentContainer, ItemMenuLink, HeaderContainer } from "../../styles/global";
 import fixedStars from "../../data/fixedStars";
 import { useLocation } from "react-router-dom";
 import { v4 as uuid } from 'uuid';
+import constellationSVG from "../../assets/svg/constellation.svg";
+import constellationDarkSVG from "../../assets/svg/constellation-dark.svg";
+import { useTheme } from "styled-components";
+import dark from "../../styles/themes/dark";
 
 export default function Constellation({ backFunction, data, setNavigationCountWrapper }) {
+    const theme = useTheme();
     const location = useLocation();
     const constellation = location.state === null ? data : location.state;
 
@@ -13,7 +19,11 @@ export default function Constellation({ backFunction, data, setNavigationCountWr
 
     return(
         <>
-            <h2>{constellation.name}</h2>
+            <DetailsPageHeader2Container>
+                <img src={theme.background === dark.background ?
+                    constellationSVG : constellationDarkSVG} alt="constellationSVG"/>
+                {" " + constellation.name}
+            </DetailsPageHeader2Container>
             <ConstellationContentContainer>
                 <ArticleContainer>
                     <section>
