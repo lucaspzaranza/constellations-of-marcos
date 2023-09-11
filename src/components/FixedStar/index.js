@@ -5,6 +5,7 @@ import fixedStars from "../../data/fixedStars";
 import { v4 as uuid } from 'uuid';
 import { useLocation } from "react-router-dom";
 import { signsShorts, planets } from "../../data/zodiac";
+import aries from '../../assets/svg/zodiac/aries-2-svgrepo-com.svg'
 
 export default function FixedStar({ backFunction, data, setNavigationCountWrapper }) {
     const location = useLocation();
@@ -68,7 +69,7 @@ export default function FixedStar({ backFunction, data, setNavigationCountWrappe
             <ConstellationContentContainer>
                 <ArticleContainer>
                     <section>
-                        <span>Longitude: {getTransformedLongitude(star.longitude) || notSpecified}</span>
+                        <span>Longitude: <img src={aries} alt="sign" style={{width: "20px"}}/> {getTransformedLongitude(star.longitude) || notSpecified}</span>
                         <span>Latitude: {getTransformedLatitude(star.latitude) || notSpecified}</span>
                         <span>Magnitude: {star.magnitude || notSpecified}</span>
                         <span>Tipo: {getStarCategory(star.category) || notSpecified}</span>

@@ -28,7 +28,7 @@ export const signsShorts = [
     'PIS'
 ];
 
-export const planets = [ // Ordem caldáica
+export const planets = [ // Ordem caldaica
     'Lua',
     'Mercúrio',
     'Vênus',
