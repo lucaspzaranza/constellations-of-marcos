@@ -120,8 +120,11 @@ export const MenuItemNameContainer = styled.span`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 5em;
-    width: 50vw;
+    width: 100vw;
+
+    @media (max-width: 465px) {
+        font-size: 5vw;
+    }
 `;
 
 export const MenuItemButton = styled.button`
@@ -136,12 +139,16 @@ export const MenuItemButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 2em;
     font-weight: bolder;
 
     @media ${tabletMaxWidth} {
-        height: 7dvh;
-        font-size: 1.3rem;
+        height: 7vh;
+        font-size: 1.5rem;
+    }
+
+    @media ${desktopMinWidth} {
+        font-size: 2rem;
     }
 
     &:hover{

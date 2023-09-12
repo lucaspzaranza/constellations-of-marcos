@@ -22,6 +22,10 @@ export const BackLinkContainer = styled.div`
     a {
         height: 6vh;
         width: ${props => props.theme.buttonWidth};
+
+        @media ${mobileMaxWidth} {
+            font-size: 5vw;
+        }
     }
 `;
 
