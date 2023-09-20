@@ -66,9 +66,10 @@ export default function StarFilterSearch({filterFunctions}) {
                         </form>
 
                         <br/>
-                            {filterOptions[optionSelectedIndex].component}
-                        <br/>
 
+                        {filterOptions[optionSelectedIndex].component}
+                        <br/>
+                        <button className="clear-filters">Limpar Filtros 🗑</button>
                     </FilterContainer>
                     <FilterButton onClick={() => setShowOptions(false)}>Fechar ▲</FilterButton>
                 </>

@@ -1,10 +1,9 @@
 import { useMemo } from 'react';
 import constellations from '../../../data/constellations.json';
 import Dropdown from './styles';
+import { removeAccents } from '../../../shared';
 
 export default function ConstellationFilter({filterFunction}) {
-    const removeAccents = str =>
-        str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
     const orderedArray = useMemo(() => constellations.sort((a, b) =>
         removeAccents(a.name) >= removeAccents(b.name)? 1 : -1
@@ -16,18 +15,21 @@ export default function ConstellationFilter({filterFunction}) {
     }
 
     return (
-        <Dropdown onChange={filter}>
-            <option value="-1">
-                Selecione uma Constelação
-            </option>
-            {
-                orderedArray.map((constellation, index) => (
-                        <option key={index} value={constellation.id}>
-                            {constellation.name}
-                        </option>
+        <>
+            <h3>Filtrar por Constelação</h3>
+            <Dropdown onChange={filter}>
+                <option value="-1">
+                    Selecione uma Constelação
+                </option>
+                {
+                    orderedArray.map((constellation, index) => (
+                            <option key={index} value={constellation.id}>
+                                {constellation.name}
+                            </option>
+                        )
                     )
-                )
-            }
-        </Dropdown>
+                }
+            </Dropdown>
+        </>
     )
 }

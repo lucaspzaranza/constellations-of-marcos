@@ -39,13 +39,24 @@ const FilterContainer = styled.div`
             flex-basis: 32.75vw;
         }
 
-        font-weight: normal;
-        font-size: small;
+        font-weight: bold;
+        font-size: large;
         border-style: none solid solid none;
         border-radius: 0;
         border-width: 1px;
     }
+
+    .clear-filters{
+        width: 100%;
+        border-style: solid none none none;
+        border-width: 1px;
+        font-weight: bold;
+        margin-bottom: 0px;
+        border-bottom-left-radius: ${ props => props.theme.borderRadius};
+        border-bottom-right-radius: ${ props => props.theme.borderRadius};
+    }
 `
+
 
 export const FilterButton = styled.button`
     margin-top: 20px;

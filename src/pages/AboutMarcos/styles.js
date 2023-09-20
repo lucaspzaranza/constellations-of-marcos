@@ -15,7 +15,6 @@ export default styled.article`
     p {
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
         text-align: justify;
         text-indent: 5vw;
     }

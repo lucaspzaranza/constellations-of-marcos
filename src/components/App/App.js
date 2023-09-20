@@ -3,7 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from "styled-components";
 
 import Header from "../Header";
-import Footer from "../Footer";
 
 import GlobalStyle from '../../styles/global'
 import themes from '../../styles/themes/';
@@ -26,7 +25,6 @@ function App() {
                 <BrowserRouter>
                     <Header onToggleTheme={toggleTheme} selectedTheme={theme}/>
                     <Router/>
-                    <Footer/>
                 </BrowserRouter>
         </ThemeProvider>
     );

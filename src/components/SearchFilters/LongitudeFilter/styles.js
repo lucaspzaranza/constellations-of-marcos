@@ -1,11 +1,11 @@
-import { styled } from 'styled-components';
-import { mobileMaxWidth } from '../../../styles/global';
+import styled from "styled-components";
+import { mobileMaxWidth } from "../../../styles/global";
 
-const Dropdown = styled.select`
-    width: 55%;
+const LongitudeDropdown = styled.select`
+    width: 20%;
 
     @media ${mobileMaxWidth} {
-        width: 80%;
+        width: 45%;
     }
 
     height: 35px;
@@ -16,4 +16,4 @@ const Dropdown = styled.select`
     border-radius: ${ props => props.theme.borderRadius};
 `;
 
-export default Dropdown;
+export default LongitudeDropdown;

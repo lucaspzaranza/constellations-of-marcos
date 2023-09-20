@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { ArticleContainer, ArticleButton, DetailsPageHeader2Container,
-    ConstellationContentContainer, ItemMenuLink, HeaderContainer } from "../../styles/global";
+    ConstellationContentContainer, ItemMenuLink, HeaderContainer, ConstellationMenuStarLink } from "../../styles/global";
 import fixedStars from "../../data/fixedStars";
 import { useLocation } from "react-router-dom";
 import { v4 as uuid } from 'uuid';
@@ -8,6 +8,7 @@ import constellationSVG from "../../assets/svg/constellation.svg";
 import constellationDarkSVG from "../../assets/svg/constellation-dark.svg";
 import { useTheme } from "styled-components";
 import dark from "../../styles/themes/dark";
+import { Link } from "react-router-dom";
 
 export default function Constellation({ backFunction, data, setNavigationCountWrapper }) {
     const theme = useTheme();
@@ -39,9 +40,9 @@ export default function Constellation({ backFunction, data, setNavigationCountWr
                         <h4>Estrelas Fixas relevantes dessa constelação:</h4>
                         {
                             stars.map(star => (
-                                <ItemMenuLink key={uuid()} to="/fixedstars" state={star} onClick={() => setNavigationCountWrapper(1)}>
+                                <ConstellationMenuStarLink key={uuid()} to="/fixedstars" state={star} onClick={() => setNavigationCountWrapper(1)}>
                                     {star.name}
-                                </ItemMenuLink>
+                                </ConstellationMenuStarLink>
                             ))
                         }
                     </section>

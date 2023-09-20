@@ -16,3 +16,6 @@ export default function getTransformedLongitude(longitude) {
 
     return `${numericPart}° ${sign.symbol} ${sign.short} ${decimalPart}'`;
 }
+
+export const removeAccents = str =>
+        str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');

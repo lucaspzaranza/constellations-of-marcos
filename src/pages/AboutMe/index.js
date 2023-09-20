@@ -4,6 +4,7 @@ import duck from '../../assets/pics/duck.jpg';
 import ZazaArticle from '../AboutMarcos/styles';
 
 import IconLink from '../../components/IconLink';
+import { ParagraphWithLink } from "./styles";
 
 export default function AboutMe() {
     const navigation = useNavigate();
@@ -29,13 +30,13 @@ export default function AboutMe() {
                     com o curso do Marcos, que filtrou, compilou o conteúdo e ensinou o que era mais importante para as estrelas e constelações.
                 </p>
 
-                <p>
+                <ParagraphWithLink>
                     Desenvolvi esse site pra facilitar a minha vida na hora de buscar esse conteúdo, e também pra praticar as tecnologias
                     que eu tenho estudado ultimamente, a stack do front-end com JavaScript, React, CSS, Styled Components, etc. O nome do site,
                     Constellation of Marcos, é uma brincadeira e trocadilho com um site que ele utilizou bastante como referência no seu curso, o
                     Constellation of Words. Falando nele, algumas informações das estrelas precisaram ser complementadas com informações desse site
-                    citado, assim como do https://horoscopes.astro-seek.com/.
-                </p>
+                    citado, assim como do<span><a href="https://horoscopes.astro-seek.com/">https://horoscopes.astro-seek.com/</a>.</span>
+                </ParagraphWithLink>
 
                 <p>
                     Eu tenho o Sol em Virgem, o Ascendente em Virgem, e Mercúrio, que é o regente do Ascendente e o planeta mais forte

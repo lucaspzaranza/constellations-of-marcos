@@ -48,6 +48,7 @@ export const BackLinkIconContainer = styled(Link)`
     height: 6vh;
     font-size: 1rem;
     margin-right: 5px;
+    border-radius: ${ props => props.theme.borderRadius};
 
     @media ${mobileMaxWidth} {
         font-size: 3vw;

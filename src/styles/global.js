@@ -60,16 +60,17 @@ export default createGlobalStyle`
 
         a {
             border: solid 1px ${props => props.theme.buttonBorder};
+            border-style: solid none solid none;
             background-color: ${props => props.theme.backgroundDarker};
-            width: 100%;
-            height: 16.8vh;
+            width: 100vw;
+            height: 20vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             font-size: 2rem;
             font-weight: bolder;
-            border-radius: ${props => props.theme.borderRadius};
+            border-radius: ${props => props.theme.borderRadiuss};
             color: white;
 
             @media ${titleBreakLineBreakPoint} {
@@ -128,10 +129,8 @@ export const MenuItemNameContainer = styled.span`
 `;
 
 export const MenuItemButton = styled.button`
-    margin-top: 3vh;
-    margin-bottom: 3vh;
     border: solid 1px ${props => props.theme.buttonBorder};
-    border-radius: ${props => props.theme.borderRadius};
+    border-radius: 0;
     background-color: ${props => props.theme.backgroundDarker};
     color: white;
     width: 100%;
@@ -151,6 +150,16 @@ export const MenuItemButton = styled.button`
         font-size: 2rem;
     }
 
+    &:first-child{
+        border-top-left-radius: ${props => props.theme.borderRadius};
+        border-top-right-radius: ${props => props.theme.borderRadius};
+    }
+
+    &:last-child{
+        border-bottom-left-radius: ${props => props.theme.borderRadius};
+        border-bottom-right-radius: ${props => props.theme.borderRadius};
+    }
+
     &:hover{
         background-color: ${props => props.theme.buttonBorder};
         transition: background-color 0.5s;
@@ -163,6 +172,14 @@ export const MenuItemButton = styled.button`
 
     img {
         width: 1.1em;
+    }
+
+    &:first-child {
+        margin-top: 3vh;
+    }
+
+    &:last-child {
+        margin-bottom: 3vh;
     }
 `;
 
@@ -222,6 +239,44 @@ export const ItemMenuLink = styled(Link)`
         transition: background-color 0.25s;
     }
 `
+
+export const ConstellationMenuStarLink = styled(Link)`
+    border-color: ${props => props.theme.buttonBorder};
+    border-style: none solid solid solid;
+    width: 95%;
+    height: 30px;
+    font-weight: normal;
+    text-decoration: underline;
+    color: white;
+    font-size: inherit;
+    border-radius: 0px;
+    margin-top: -10px;
+    padding: 5px 5vw 5px 0vw;
+    margin-bottom: 10px;
+
+    &:nth-child(2) {
+        border-style: solid;
+        border-top-right-radius: ${props => props.theme.borderRadius};
+        border-top-left-radius: ${props => props.theme.borderRadius};
+    }
+
+    &:last-child {
+        border-bottom-right-radius: ${props => props.theme.borderRadius};
+        border-bottom-left-radius: ${props => props.theme.borderRadius};
+    }
+
+    & + span {
+        margin-top: -10px;
+    }
+
+    &:hover {
+        transition: background-color 0.5s;
+    }
+
+    &:active {
+        transition: background-color 0.25s;
+    }
+`;
 
 export const IconLinkDiv = styled.div`
     width: 100vw;

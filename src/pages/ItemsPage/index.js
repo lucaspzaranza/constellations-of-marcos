@@ -7,11 +7,15 @@ import fixedStars from "../../data/fixedStars"
 import constellations from "../../data/constellations";
 import constellationIcon from '../../assets/svg/constellation.svg'
 import starIcon from '../../assets/svg/star.svg';
-import getTransformedLongitude from "../../shared";
+import getTransformedLongitude, { removeAccents } from "../../shared";
 import StarFilterSearch from "../../components/StarFilterSearch";
 
 export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemComponent, isConstellation }) {
-    const GetDataArray = () => isConstellation ? constellations : fixedStars;
+
+    const GetDataArray = () => isConstellation ?
+    constellations.sort((a, b) => removeAccents(a.name) >= removeAccents(b.name)? 1 : -1)
+    : fixedStars.sort((a, b) => a.longitude >= b.longitude? 1 : -1);
+
     const navigation = useNavigate();
 
     const [showItems, setShowItems] = useState(false);

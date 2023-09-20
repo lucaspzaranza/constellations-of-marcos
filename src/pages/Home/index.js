@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-import LinksContainer from "./styles"
+import LinksContainer from "./styles";
+import Footer from "../../components/Footer";
 
 export default function Home() {
 
@@ -10,6 +11,7 @@ export default function Home() {
             <Link to="/fixedstars">Estrelas Fixas</Link>
             <Link to="/about-marcos">Quem é Marcos?</Link>
             <Link to="/about-me">Quem sou eu?</Link>
+            <Footer/>
         </LinksContainer>
     )
 }
