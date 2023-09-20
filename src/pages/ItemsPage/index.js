@@ -6,7 +6,9 @@ import { BackLinkContainer, BackLinkIconContainer, ItemsPageContainer, HeaderMen
 import fixedStars from "../../data/fixedStars"
 import constellations from "../../data/constellations";
 import constellationIcon from '../../assets/svg/constellation.svg'
-import starIcon from '../../assets/svg/star.svg'
+import starIcon from '../../assets/svg/star.svg';
+import getTransformedLongitude from "../../shared";
+import StarFilterSearch from "../../components/StarFilterSearch";
 
 export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemComponent, isConstellation }) {
     const GetDataArray = () => isConstellation ? constellations : fixedStars;
@@ -43,6 +45,17 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
         setShowItems(prevState => !prevState);
     }
 
+    function filterByConstellation(id) {
+        id>= 0?
+            setFilteredArray(baseArray.filter(data => data.constellationID == id))
+        :
+            setFilteredArray(baseArray);
+    }
+
+    const filterFunctions = [
+        filterByConstellation
+    ]
+
     return (
         <ItemsPageContainer>
             {!showItems ?
@@ -54,6 +67,12 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
                     <BackLinkIconContainer to="/">⬅ Voltar</BackLinkIconContainer>
                     <SearchInput placeholder={inputPlaceholder} filterFunction={filterArray}/>
                 </HeaderMenu>
+                {
+                    !isConstellation && // fixedStars only
+                    (
+                        <StarFilterSearch filterFunctions={filterFunctions}/>
+                    )
+                }
 
                 <MenuItemsContainer>
                     {filteredArray.length === 0 && (
@@ -64,7 +83,7 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
                         <MenuItemButton key={item.id} type="button" onClick={() => toggleShowItems(item.id)}>
                             <MenuItemNameContainer>
                                 <img src={isConstellation? constellationIcon : starIcon} alt="itemIcon"/>
-                                {' ' + item.name}
+                                {' ' + item.name + (isConstellation? '' : ` ${getTransformedLongitude(item.longitude)}`)}
                             </MenuItemNameContainer>
                         </MenuItemButton>
                     ))}

@@ -10,6 +10,7 @@ import starSVG from '../../assets/svg/star.svg'
 import starDarkSVG from '../../assets/svg/star-dark.svg'
 import { useTheme } from "styled-components";
 import dark from "../../styles/themes/dark";
+import getTransformedLongitude from "../../shared";
 
 export default function FixedStar({ backFunction, data, setNavigationCountWrapper }) {
     const theme = useTheme();
@@ -25,23 +26,6 @@ export default function FixedStar({ backFunction, data, setNavigationCountWrappe
 
     function getConstellationData(id) {
         return constellations.find(constellation => constellation.id === id);
-    }
-
-    function getTransformedLongitude(longitude) {
-        const signIndex = Math.trunc(longitude / 30);
-        const signDegree = longitude % 30;
-
-        var [numericPart, decimalPart] = signDegree.toString().split('.');
-        if(decimalPart === undefined) {
-            decimalPart = '00';
-        }
-        else {
-            decimalPart = decimalPart.length === 1 ? `${decimalPart}0` : decimalPart.substring(0, 2);
-        }
-
-        const sign = signs[signIndex];
-
-        return `${numericPart}° ${sign.symbol} ${sign.short} ${decimalPart}'`;
     }
 
     function getTransformedLatitude(latitude) {

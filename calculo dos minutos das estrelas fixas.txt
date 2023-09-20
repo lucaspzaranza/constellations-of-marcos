@@ -1,0 +1,10 @@
+100 - 1°25'
+23 - 17'
+
+arredondando 23 pra 20, 20 é 1/5 de 100.
+
+85' / 5 = 17'
+
+pegar esse valor e somar 17 minutos dá uma posição aproximada de onde estão hoje (2023)
+
+baseado nos dados do Constellation of Words
