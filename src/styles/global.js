@@ -318,3 +318,26 @@ export const DetailsPageHeader2Container = styled.h2`
         width: 1.1em;
     }
 `
+
+export const FilterButton = styled.button`
+    border-style: solid solid solid solid !important;
+    border-width: 2px !important;
+    margin-top: 20px;
+    box-shadow: 1px 1px black;
+    height: 7vh;
+    width: 100%;
+`;
+
+export const NumberInputField = styled.input`
+    flex-basis: 45%;
+    width: 75px;
+    height: 35px;
+    border-radius: ${props => props.theme.borderRadius};
+    font-size: medium;
+
+    border: 2px solid ${props => props.theme.buttonBorder};
+
+    &:focus {
+        outline: 1px solid ${props => props.theme.inputFocus};
+    }
+`;

@@ -50,14 +50,36 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
     }
 
     function filterByConstellation(id) {
-        id>= 0?
+        id >= 0?
             setFilteredArray(baseArray.filter(data => data.constellationID == id))
         :
             setFilteredArray(baseArray);
     }
 
+    function filterByLongitude(signIndex, longitude, distance) {
+        const longitudeFinal = (signIndex * 30) + parseFloat(longitude);
+
+        var minDistance = longitudeFinal - distance < 0? 0 : longitudeFinal - distance;
+        var maxDistance = longitudeFinal + distance;
+
+        setFilteredArray(baseArray.filter(star =>
+            star.longitude >= minDistance && star.longitude <= maxDistance)
+        );
+    }
+
+    function filterByLatitude(latitude, distance) {
+        var minDistance = latitude - distance < 0? 0 : latitude - distance;
+        var maxDistance = latitude + distance;
+
+        setFilteredArray(baseArray.filter(star =>
+            star.longitude >= minDistance && star.longitude <= maxDistance)
+        );
+    }
+
     const filterFunctions = [
-        filterByConstellation
+        filterByConstellation,
+        filterByLongitude,
+        filterByLatitude
     ]
 
     return (
@@ -74,7 +96,7 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
                 {
                     !isConstellation && // fixedStars only
                     (
-                        <StarFilterSearch filterFunctions={filterFunctions}/>
+                        <StarFilterSearch filterFunctions={filterFunctions} clearFilters={() => setFilteredArray(baseArray)}/>
                     )
                 }
 

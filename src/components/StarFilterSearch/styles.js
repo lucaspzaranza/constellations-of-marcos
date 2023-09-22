@@ -5,8 +5,9 @@ const FilterContainer = styled.div`
     background-color: ${ props => props.theme.backgroundDarker};
     margin-top: 20px;
     border-radius: ${ props => props.theme.borderRadius};
-    border: solid 1px;
+    border: solid 2px;
     border-color: ${ props => props.theme.buttonBorder};
+    width: 100%;
 
     h3 {
         padding-top: 10px;
@@ -15,7 +16,7 @@ const FilterContainer = styled.div`
     }
 
     form {
-        width: 100vw;
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
 
@@ -23,33 +24,25 @@ const FilterContainer = styled.div`
             border-top-left-radius: ${ props => props.theme.borderRadius};
         }
 
-        button:nth-child(3) {
+        button:nth-child(3), button:nth-child(6) {
             border-top-right-radius: ${ props => props.theme.borderRadius};
+            border-right-style: none;
         }
     }
 
     button {
-        flex-basis: 32.6%;
-
-        @media ${mobileMaxWidth} {
-            flex-basis: 31.75vw;
-        }
-
-        @media ${fullHDMinWidth} {
-            flex-basis: 32.75vw;
-        }
-
+        flex-basis: 33.33%;
         font-weight: bold;
         font-size: large;
         border-style: none solid solid none;
         border-radius: 0;
-        border-width: 1px;
+        border-width: 2px;
     }
 
     .clear-filters{
         width: 100%;
         border-style: solid none none none;
-        border-width: 1px;
+        border-width: 2px;
         font-weight: bold;
         margin-bottom: 0px;
         border-bottom-left-radius: ${ props => props.theme.borderRadius};
@@ -58,7 +51,7 @@ const FilterContainer = styled.div`
 `
 
 
-export const FilterButton = styled.button`
+export const ToggleFilterMenuButton = styled.button`
     margin-top: 20px;
 `
 
