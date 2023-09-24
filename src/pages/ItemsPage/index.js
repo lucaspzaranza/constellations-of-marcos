@@ -59,27 +59,47 @@ export default function ItemsPage({ title, subtitle, inputPlaceholder, ItemCompo
     function filterByLongitude(signIndex, longitude, distance) {
         const longitudeFinal = (signIndex * 30) + parseFloat(longitude);
 
-        var minDistance = longitudeFinal - distance < 0? 0 : longitudeFinal - distance;
+        var minDistance = longitudeFinal - distance < 0? (360 + parseFloat(longitude)) - distance : longitudeFinal - distance;
         var maxDistance = longitudeFinal + distance;
 
-        setFilteredArray(baseArray.filter(star =>
-            star.longitude >= minDistance && star.longitude <= maxDistance)
-        );
+        if(longitudeFinal - distance >= 0) {
+            setFilteredArray(baseArray.filter(star =>
+                star.longitude >= minDistance && star.longitude <= maxDistance)
+            );
+        }
+        else { // It'll only appear on Aries sign
+            setFilteredArray(baseArray.filter(star =>
+                star.longitude >= minDistance || star.longitude <= maxDistance)
+            );
+        }
     }
 
-    function filterByLatitude(latitude, distance) {
-        var minDistance = latitude - distance < 0? 0 : latitude - distance;
-        var maxDistance = latitude + distance;
+    function filterByLatitude(inputValues) {
+        const [direction, latitude, distance] = inputValues;
 
-        setFilteredArray(baseArray.filter(star =>
-            star.longitude >= minDistance && star.longitude <= maxDistance)
-        );
+        var minDistance = (direction * latitude) - distance;
+        var maxDistance = (direction * latitude) + parseFloat(distance);
+
+        setFilteredArray(baseArray.filter(star => star.latitude >= minDistance && star.latitude <= maxDistance));
+    }
+
+    function filterByMagnitude(option, value) {
+        if(option == 0) { // =
+            setFilteredArray(baseArray.filter(star => star.magnitude == value));
+        }
+        else if(option == 1) { // >=
+            setFilteredArray(baseArray.filter(star => star.magnitude >= value));
+        }
+        else if(option == 2) { // <=
+            setFilteredArray(baseArray.filter(star => star.magnitude <= value));
+        }
     }
 
     const filterFunctions = [
         filterByConstellation,
         filterByLongitude,
-        filterByLatitude
+        filterByLatitude,
+        filterByMagnitude
     ]
 
     return (

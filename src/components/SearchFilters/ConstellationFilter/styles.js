@@ -3,6 +3,7 @@ import { mobileMaxWidth } from '../../../styles/global';
 
 const Dropdown = styled.select`
     width: 55%;
+    width: 35%;
 
     @media ${mobileMaxWidth} {
         width: 80%;

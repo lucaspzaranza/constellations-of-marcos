@@ -329,7 +329,7 @@ export const FilterButton = styled.button`
 `;
 
 export const NumberInputField = styled.input`
-    flex-basis: 45%;
+    flex-basis: 50%;
     width: 75px;
     height: 35px;
     border-radius: ${props => props.theme.borderRadius};

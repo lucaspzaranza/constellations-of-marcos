@@ -22,7 +22,6 @@ export const LongitudeFilterContainer = styled.div`
             justify-content: space-between;
         }
     }
-
 `;
 
 export const LongitudeDropdown = styled.select`
