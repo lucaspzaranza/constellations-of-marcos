@@ -1,4 +1,4 @@
-import { signs } from "../data/zodiac";
+import { signs, planets } from "../data/zodiac";
 
 export default function getTransformedLongitude(longitude) {
     const signIndex = Math.trunc(longitude / 30);
@@ -19,3 +19,25 @@ export default function getTransformedLongitude(longitude) {
 
 export const removeAccents = str =>
         str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+export function getStarNatureName(nature) {
+
+    if(nature === null) {
+        return 'Não especificada'
+    }
+    else {
+        var name = '';
+
+        nature.forEach((natureValue, index) => {
+            const planet = planets[natureValue];
+            //console.log(planet);
+            name += `${planet.name} ${planet.symbol}`
+
+           if(index < nature.length - 1) {
+            name += ' e ';
+           }
+        })
+
+        return name;
+    }
+}

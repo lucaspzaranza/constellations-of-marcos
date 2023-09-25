@@ -3,21 +3,12 @@ import { LongitudeDropdown } from "../LongitudeFilter/styles";
 import { FilterButton, NumberInputField } from "../../../styles/global"
 import { useRef } from "react";
 
-export default function MagnitudeFilter({filterFunction, input, setInputReferences}) {
-    const dropdown = useRef(null);
-
-    function setValue(input) {
-        if(input === undefined) {
-            setInputReferences(input);
-        }
-    }
+export default function MagnitudeFilter({filterFunction, inputs}) {
 
     function callFilterFunction() {
-        if(input == undefined) {
-            input.target.value = 0;
+        if(inputs[0].current != null) {
+            filterFunction(inputs[0].current.value, inputs[1].current.value);
         }
-
-        filterFunction(dropdown.current.value, input.target.value);
     }
 
     function inputValueLimit(input) {
@@ -35,17 +26,13 @@ export default function MagnitudeFilter({filterFunction, input, setInputReferenc
             <div>
                 <h3>Filtrar pela Magnitude</h3>
                 <div>
-                    <LongitudeDropdown onChange={(dropdown) => setValue(dropdown, 0)} ref={dropdown}>
+                    <LongitudeDropdown ref={inputs[0]}>
                         <option defaultChecked value={0}>= Igual a</option>
                         <option value={1}>≥ Maior ou Igual a</option>
                         <option value={2}>≤ Menor ou Igual a</option>
                     </LongitudeDropdown>
 
-                    <NumberInputField type='number' min={0} max={6} placeholder="Magnitude (ex: 3.4)"
-                        onChange={(input) =>{
-                            setValue(input);
-                            inputValueLimit(input)}
-                    }/>
+                    <NumberInputField type='number' placeholder="Magnitude (ex: 3.4)" onChange={inputValueLimit} ref={inputs[1]}/>
                 </div>
                 <FilterButton onClick={callFilterFunction}>Filtrar</FilterButton>
             </div>

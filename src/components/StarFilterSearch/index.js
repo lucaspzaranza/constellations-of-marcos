@@ -7,21 +7,22 @@ import CategoryFilter from "../SearchFilters/CategoryFilter";
 import NatureFilter from "../SearchFilters/NatureFilter";
 import FilterContainer, { ToggleFilterMenuButton } from "./styles";
 
-export default function StarFilterSearch({filterFunctions, clearFilters}) {
+export default function StarFilterSearch({filterFunctions, clearFilters, changeStarDescription}) {
     const [showOptions, setShowOptions] = useState(false);
     const [optionSelectedIndex, setOptionSelected] = useState(0);
 
     const constellationDropdown = useRef(null);
-    const longitudeInputs = [useRef(0), useRef(0), useRef(0)];
-    const latitudeInputs = [useRef(0), useRef(0), useRef(0)];
+    const longitudeInputs = [useRef(null), useRef(null), useRef(null)];
+    const latitudeInputs = [useRef(null), useRef(null), useRef(null)];
+    const magnitudeInputs = [useRef(null), useRef(null)]
+    const categoryDropdown = useRef(null);
+    const natureCheckoxes = [useRef(null), useRef(null), useRef(null), 
+        useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
 
-    // const setLatitudeDropdown = dropdown => latitudeInputs[0] = dropdown;
-    // const setLatitudeInput = input => latitudeInputs[1] = input;
-    // const setLatitudeDistanceInput = input => latitudeInputs[2] = input;
-
-    var magnitudeInput = useMemo(() => undefined, []);
-    //const setMagnitudeDropdown = dropdown => magnitudeInputs[0] = dropdown;
-    const setMagnitudeInput = input => magnitudeInput = input;
+    function chooseTab(index) {
+        setOptionSelected(index);
+        changeStarDescription(index);
+    }
 
     const filterOptions = [
         {
@@ -45,20 +46,19 @@ export default function StarFilterSearch({filterFunctions, clearFilters}) {
         {
             value: 'magnitude',
             label: "Magnitude",
-            component: <MagnitudeFilter filterFunction={filterFunctions[3]} input={magnitudeInput}
-                setInputReferences={[setMagnitudeInput]}/>
+            component: <MagnitudeFilter filterFunction={filterFunctions[3]} inputs={magnitudeInputs}/>
         },
 
         {
             value: 'category',
             label: "Categoria",
-            component: <CategoryFilter filterFunction={filterFunctions[4]}/>
+            component: <CategoryFilter filterFunction={filterFunctions[4]} dropdownReference={categoryDropdown}/>
         },
 
         {
             value: 'nature',
             label: "Natureza",
-            component: <NatureFilter filterFunction={filterFunctions[5]}/>
+            component: <NatureFilter filterFunction={filterFunctions[5]} checkboxes={natureCheckoxes}/>
         }
     ];
 
@@ -68,22 +68,28 @@ export default function StarFilterSearch({filterFunctions, clearFilters}) {
         }
 
         longitudeInputs.forEach((input, index) => {
-            if(input.current !== 0 && input.current !== null) {
+            if(input.current !== null) {
                 input.current.value = index == 0 ? 0 : '';
             }
         });
 
         latitudeInputs.forEach((input, index) => {
-            if(input.current !== 0 && input.current !== null) {
+            if(input.current !== null) {
                 input.current.value = index == 0 ? 0 : '';
             }
         });
 
-        // magnitudeInputs.forEach((input, index) => {
-        //     if(input !== undefined) {
-        //         input.target.value = index == 0 ? 0 : '';
-        //     }
-        // });
+        magnitudeInputs.forEach((input, index) => {
+            if(input.current !== null) {
+                input.current.value = index == 0 ? 0 : '';
+            }
+        });
+
+        natureCheckoxes.forEach(checkbox => {
+            if(checkbox.current !== null && checkbox.current.checked) {
+                checkbox.current.checked = false;
+            }
+        });
 
         clearFilters();
     }
@@ -96,8 +102,7 @@ export default function StarFilterSearch({filterFunctions, clearFilters}) {
                         <form>
                             {filterOptions.map((filter, index) => (
                                 <Fragment key={index}>
-
-                                    <button type="button" defaultChecked={index === 0} onClick={() => setOptionSelected(index)}>
+                                    <button type="button" onClick={() => chooseTab(index)}>
                                         {filter.label}
                                     </button>
                                 </Fragment>
